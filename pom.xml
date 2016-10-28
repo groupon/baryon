@@ -65,27 +65,27 @@
 
     <properties>
         <!-- Compile and Provided Dependencies -->
-        <spark.version>1.5.2</spark.version>
+        <spark.version>2.0.1</spark.version>
         <kafka.version>0.8.1.1</kafka.version>
         <zkclient.version>0.7</zkclient.version>
-        <spark.metrics.version>1.0</spark.metrics.version>
-        <json4s.version>3.2.10</json4s.version>
-        <slf4j.version>1.7.10</slf4j.version>
+        <spark.metrics.version>1.1-SNAPSHOT</spark.metrics.version>
+        <json4s.version>3.2.11</json4s.version>
+        <slf4j.version>1.7.16</slf4j.version>
         <zookeeper.version>3.4.6</zookeeper.version>
         <hadoop.common.version>2.2.0</hadoop.common.version>
         <ning.async.http.client.version>1.9.21</ning.async.http.client.version>
-        <fasterxml.jackson.version>2.4.4</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.6.5</fasterxml.jackson.version>
         <typesafe.play.version>2.3.10</typesafe.play.version>
 
         <!-- Test Dependencies -->
-        <scalatest.version>2.2.4</scalatest.version>
+        <scalatest.version>2.2.6</scalatest.version>
         <log4j.version>1.2.17</log4j.version>
         <mockito.version>1.10.8</mockito.version>
 
         <!-- Project and Plugin Settings -->
         <project.maven.version>3.3.3</project.maven.version>
         <project.build.targetJdk>1.7</project.build.targetJdk>
-        <dep.scala.version>2.10.4</dep.scala.version>
+        <dep.scala.version>2.10.6</dep.scala.version>
         <project.plugin.scala.version>3.2.2</project.plugin.scala.version>
         <project.plugin.scalatest.version>1.0</project.plugin.scalatest.version>
         <project.plugin.scalastyle.version>0.6.0</project.plugin.scalastyle.version>
@@ -181,6 +181,22 @@
                     <groupId>com.google.code.findbugs</groupId>
                     <artifactId>jsr305</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -197,12 +213,34 @@
                     <groupId>com.google.code.findbugs</groupId>
                     <artifactId>jsr305</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
             <version>${kafka.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.101tec</groupId>
@@ -212,6 +250,10 @@
                 <exclusion>
                     <groupId>io.netty</groupId>
                     <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -229,6 +271,10 @@
                     <groupId>io.netty</groupId>
                     <artifactId>netty</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -240,16 +286,17 @@
             <groupId>org.json4s</groupId>
             <artifactId>json4s-jackson_2.10</artifactId>
             <version>${json4s.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${dep.scala.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- Test Dependencies -->
@@ -425,7 +472,20 @@
                     <groupId>org.codehaus.jackson</groupId>
                     <artifactId>jackson-mapper-asl</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 </project>
